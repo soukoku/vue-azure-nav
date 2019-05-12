@@ -1,6 +1,7 @@
 <template>
   <div
-    class="blade flex-none flex flex-col border-r border-blue-800 w-64 overflow-none"
+    class="blade flex-none flex flex-col border-r border-blue-800 overflow-none"
+    :class="{ 'w-full': maximized }"
   >
     <div class="flex-none border-b border-blue-800">
       <slot name="header">Blade Header</slot>
@@ -39,9 +40,17 @@
 <script>
 export default {
   name: 'Blade',
-  props: {}
+  props: {
+    maximized: {
+      type: Boolean,
+      default: true
+    }
+  }
 }
 </script>
 
 <style>
+.blade {
+  min-width: theme('width.64');
+}
 </style>

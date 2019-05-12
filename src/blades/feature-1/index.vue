@@ -1,5 +1,5 @@
 <template>
-  <base-blade>
+  <base-blade :maximized="false">
     This is index of feature-1
   </base-blade>
 </template>
