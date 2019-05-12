@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/views/Home.vue'
 import NotFound from '@/views/NotFound.vue'
 import BladeTrack from '@/views/BladeTrack'
+import BladeRoutes from '@/blades'
 
 Vue.use(Router)
 
@@ -20,10 +21,12 @@ export default new Router({
       name: 'blade',
       component: BladeTrack,
       children: [
-        {
-          path: '*',
-          component: () => import('@/components/Blade')
-        }
+        ...BladeRoutes
+        // temp catch all path
+        // {
+        //   path: '*',
+        //   component: 'base-blade'
+        // }
       ]
     },
     {

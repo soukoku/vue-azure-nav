@@ -10,9 +10,12 @@
       >
         Side nav
         <router-link :to="{ name: 'home' }">Home</router-link>
-        <router-link to="/blade/test1">Track 1</router-link>
-        <router-link to="/blade/test2">Track 2</router-link>
-        <router-link to="/blade/test3">Track 3</router-link>
+        <router-link
+          v-for="feat in topFeatures"
+          :key="feat.text"
+          :to="feat.path"
+          >{{ feat.text }}</router-link
+        >
       </nav>
       <main class="flex-auto overflow-hidden">
         <router-view></router-view>
@@ -21,12 +24,21 @@
   </div>
 </template>
 <script>
-// import BladeTrack from '@/components/BladeTrack'
-// import Blade from '@/components/Blade'
 export default {
-  // components: {
-  //   BladeTrack,
-  //   Blade
-  // }
+  data() {
+    return {
+      //todo: make it dynamic
+      topFeatures: [
+        {
+          text: 'Feature 1',
+          path: '/blade/feature-1'
+        },
+        {
+          text: 'Feature 2',
+          path: '/blade/feature-2'
+        }
+      ]
+    }
+  }
 }
 </script>
