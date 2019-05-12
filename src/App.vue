@@ -9,19 +9,24 @@
       >
         Side nav
       </nav>
-      <div
-        class="blade-track flex-auto flex items-strech overflow-y-none overflow-x-scroll"
-      >
-        <div class="blade flex-none border-r border-blue-800 w-64">Blade 1</div>
-        <div class="blade flex-none border-r border-blue-800 w-64">Blade 2</div>
-        <div class="blade flex-none border-r border-blue-800 w-64">Blade 3</div>
-        <div class="blade flex-none border-r border-blue-800 w-64">Blade 4</div>
-        <div class="blade flex-none border-r border-blue-800 w-64">Blade 5</div>
-        <div class="blade flex-none border-r border-blue-800 w-64">Blade 6</div>
-      </div>
+      <blade-track>
+        <blade>Blade 1</blade>
+        <blade>Blade 2</blade>
+        <blade>Blade 3</blade>
+        <blade>Blade 4</blade>
+        <blade>Blade 5</blade>
+        <blade>Blade 6</blade>
+      </blade-track>
     </div>
   </div>
 </template>
 <script>
-export default {}
+import BladeTrack from '@/components/BladeTrack'
+import Blade from '@/components/Blade'
+export default {
+  components: {
+    BladeTrack,
+    Blade
+  }
+}
 </script>
