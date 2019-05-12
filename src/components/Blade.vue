@@ -8,7 +8,7 @@
     <div class="flex-none border-b border-blue-800">
       <slot name="toolbar">Toolbar</slot>
     </div>
-    <div class="flex-auto scroll-auto">
+    <div class="flex-auto overflow-auto">
       <slot>
         <p class="mb-4">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod error

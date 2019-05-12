@@ -8,7 +8,7 @@
       </router-link>
     </div>
     <div
-      class="blade-track flex-auto flex items-strech overflow-x-auto overflow-y-hidden scrolling-touch"
+      class="blade-track flex-auto flex items-strech overflow-hidden overflow-x-auto scrolling-touch"
     >
       <component
         v-for="(blade, idx) in blades"
