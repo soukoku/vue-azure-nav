@@ -9,6 +9,12 @@ export default [
         path: 'sub-1',
         component: () =>
           import(/* webpackChunkName: "feature-1" */ './sub-1.vue')
+      },
+      {
+        name: 'feature-1-sub-2',
+        path: 'sub-2',
+        component: () =>
+          import(/* webpackChunkName: "feature-1" */ './sub-2.vue')
       }
     ]
   }

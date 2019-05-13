@@ -3,12 +3,18 @@
     <div class="blade-crumb flex-none border-b border-blue-800">
       <router-link :to="{ name: 'home' }">Home</router-link>
 
-      <router-link v-for="(blade, idx) in blades" :key="idx" :to="blade.route">
+      <router-link
+        v-for="(blade, idx) in blades"
+        :key="idx"
+        :to="blade.route"
+        :data-index="idx"
+      >
         {{ blade.name }}
       </router-link>
     </div>
     <div
       class="blade-track flex-auto flex items-strech overflow-hidden overflow-x-auto scrolling-touch"
+      ref="track"
     >
       <component
         v-for="(blade, idx) in blades"
@@ -65,14 +71,21 @@ export default {
           // 2 for blade/root-feature
           this.blades = []
         }
-
         this.blades.push({
           name: to.name || 'Unknown',
           route: to,
           component: to.matched[to.matched.length - 1].components.default
         })
       }
+
       next()
+
+      // scroll to last blade
+      this.$nextTick(() => {
+        console.log('should scroll to end')
+        const track = this.$refs.track
+        track.scrollLeft = track.scrollWidth
+      })
     } else {
       // invalid blade path, back to home
       next('/')
