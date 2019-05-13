@@ -3,11 +3,16 @@
     class="blade flex-none flex flex-col border-r border-blue-800 overflow-none"
     :class="{ 'w-full': maximized }"
   >
-    <div class="flex-none border-b border-blue-800">
-      <slot name="header">Blade Header</slot>
+    <div class="flex-none flex border-b border-blue-800">
+      <div class="flex-auto">
+        <slot name="header">Blade Header</slot>
+      </div>
+      <div class="flex-none">
+        <button title="Close" @click="doClose">X</button>
+      </div>
     </div>
-    <div class="flex-none border-b border-blue-800">
-      <slot name="toolbar">Toolbar</slot>
+    <div class="flex-none border-b border-blue-800" v-if="hasSlot('toolbar')">
+      <slot name="toolbar"></slot>
     </div>
     <div class="flex-auto overflow-auto">
       <slot>
@@ -31,8 +36,8 @@
         </p>
       </slot>
     </div>
-    <div class="flex-none border-t border-blue-800">
-      <slot name="footer">Footer</slot>
+    <div class="flex-none border-t border-blue-800" v-if="hasSlot('footer')">
+      <slot name="footer"></slot>
     </div>
   </div>
 </template>
@@ -44,6 +49,15 @@ export default {
     maximized: {
       type: Boolean,
       default: true
+    }
+  },
+  methods: {
+    hasSlot(name = 'default') {
+      return !!this.$slots[name] || !!this.$scopedSlots[name]
+    },
+    doClose() {
+      // horrible hack due to no template inheritance in vue :(
+      this.$parent.$emit('close', this.$parent)
     }
   }
 }

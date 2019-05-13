@@ -3,12 +3,7 @@
     <div class="blade-crumb flex-none border-b border-blue-800">
       <router-link :to="{ name: 'home' }">Home</router-link>
 
-      <router-link
-        v-for="(blade, idx) in blades"
-        :key="idx"
-        :to="blade.route"
-        :data-index="idx"
-      >
+      <router-link v-for="(blade, idx) in blades" :key="idx" :to="blade.route">
         {{ blade.name }}
       </router-link>
     </div>
@@ -20,6 +15,7 @@
         v-for="(blade, idx) in blades"
         :key="idx"
         :is="blade.component"
+        :data-index="idx"
         @close="closeBlade"
       ></component>
     </div>
@@ -91,9 +87,8 @@ export default {
   },
   methods: {
     closeBlade(blade) {
-      const idx = this.blades.findIndex(b => b.route.path === blade.$route.path)
-
-      if (idx > -1) this.blades.splice(idx, this.blades.length - idx)
+      const dataIdx = blade.$el.dataset.index
+      this.blades.splice(dataIdx, this.blades.length - dataIdx)
 
       // no more open blades, back to home
       if (!this.blades.length) this.$router.push('/')
