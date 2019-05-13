@@ -1,5 +1,7 @@
 <template>
-  <div class="w-screen h-screen flex flex-col overflow-hidden">
+  <div
+    class="w-screen h-screen flex flex-col overflow-hidden font-sans text-gray-900"
+  >
     <nav class="flex-none flex items-center h-10 bg-blue-800 text-blue-100">
       <img src="@/assets/logo.png" class="h-6" />
       Top navigation
