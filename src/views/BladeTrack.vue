@@ -14,6 +14,7 @@
         v-for="(blade, idx) in blades"
         :key="idx"
         :is="blade.component"
+        @close="closeBlade"
       ></component>
     </div>
   </div>
@@ -29,6 +30,7 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     console.log('before route enter to', to)
+
     if (to.matched.length > 1) {
       next(vm => {
         vm.blades.push({
@@ -38,35 +40,53 @@ export default {
         })
       })
     } else {
-      next(false)
+      // invalid blade path, back to home
+      next('/')
     }
   },
   beforeRouteUpdate(to, from, next) {
     console.log('before route update to', to)
 
     if (to.matched.length > 1) {
+      let oldIndex = this.blades.findIndex(b => b.route.path === to.path)
+
+      if (oldIndex > -1) {
+        this.blades[oldIndex].route = to
+
+        // close blades AFTER the oldIndex
+        oldIndex++
+        if (this.blades.length > oldIndex) {
+          this.blades.splice(oldIndex, this.blades.length - oldIndex)
+        }
+      } else {
+        // if new route is "root" feature also clear blades
+        const pathParts = to.path.split('/').filter(p => !!p)
+        if (pathParts.length === 2) {
+          // 2 for blade/root-feature
+          this.blades = []
+        }
+
+        this.blades.push({
+          name: to.name || 'Unknown',
+          route: to,
+          component: to.matched[to.matched.length - 1].components.default
+        })
+      }
       next()
-      this.blades.push({
-        name: to.name || 'Unknown',
-        route: to,
-        component: to.matched[to.matched.length - 1].components.default
-      })
     } else {
-      next(false)
+      // invalid blade path, back to home
+      next('/')
     }
-    // called when the route that renders this component has changed,
-    // but this component is reused in the new route.
-    // For example, for a route with dynamic params `/foo/:id`, when we
-    // navigate between `/foo/1` and `/foo/2`, the same `Foo` component instance
-    // will be reused, and this hook will be called when that happens.
-    // has access to `this` component instance.
   },
-  beforeRouteLeave(to, from, next) {
-    console.log('before route leave to', to)
-    next()
-    // called when the route that renders this component is about to
-    // be navigated away from.
-    // has access to `this` component instance.
+  methods: {
+    closeBlade(blade) {
+      const idx = this.blades.findIndex(b => b.route.path === blade.$route.path)
+
+      if (idx > -1) this.blades.splice(idx, this.blades.length - idx)
+
+      // no more open blades, back to home
+      if (!this.blades.length) this.$router.push('/')
+    }
   }
 }
 </script>
