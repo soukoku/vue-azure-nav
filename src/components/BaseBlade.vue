@@ -11,9 +11,9 @@
         <button
           title="Close"
           @click="doClose"
-          class="inline-block w-8 h-8 hover:bg-red-800 hover:text-red-100"
+          class="flex items-center justify-center w-8 h-8 hover:bg-red-800 hover:text-red-100"
         >
-          X
+          <CloseIcon :size="20"/>
         </button>
       </div>
     </div>
@@ -30,8 +30,12 @@
 </template>
 
 <script>
+import CloseIcon from 'mdi/Close'
 export default {
   name: 'Blade',
+  components: {
+    CloseIcon
+  },
   props: {
     maximized: {
       type: Boolean,

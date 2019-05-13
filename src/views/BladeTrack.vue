@@ -1,17 +1,13 @@
 <template>
   <div class="w-full h-full flex flex-col">
-    <div class="blade-crumb flex-none border-b border-gray-400">
-      <router-link :to="{ name: 'home' }" class="inline-block py-1 px-2"
+    <div class="blade-crumb flex-none border-b border-gray-400 pl-3">
+      <router-link :to="{ name: 'home' }" class="inline-block p-1"
         >Home</router-link
       >
 
       <template v-for="(blade, idx) in blades">
         &gt;
-        <router-link
-          :key="idx"
-          :to="blade.route"
-          class="inline-block py-1 px-2"
-        >
+        <router-link :key="idx" :to="blade.route" class="inline-block p-1">
           {{ blade.name }}
         </router-link>
       </template>
