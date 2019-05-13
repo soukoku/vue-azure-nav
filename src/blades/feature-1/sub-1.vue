@@ -2,7 +2,7 @@
   <base-blade :maximized="false" class="w-64">
     This is a sub feature of feature-1
     <p>
-      Go to <router-link :to="{ name: 'feature-1-sub-2' }">sub 2</router-link>
+      Go to <router-link class="link" :to="{ name: 'feature-1-sub-2' }">sub 2</router-link>
     </p>
     <p class="mb-4">
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod error illum

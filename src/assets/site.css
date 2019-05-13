@@ -4,3 +4,9 @@
 
 @tailwind utilities;
 
+.link {
+  @apply text-blue-700;
+}
+.link:hover {
+  @apply text-blue-800 underline;
+}
