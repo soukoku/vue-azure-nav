@@ -20,14 +20,7 @@ export default new Router({
       path: '/blade',
       name: 'blade',
       component: BladeTrack,
-      children: [
-        ...BladeRoutes
-        // temp catch all path
-        // {
-        //   path: '*',
-        //   component: 'base-blade'
-        // }
-      ]
+      children: BladeRoutes
     },
     {
       path: '*',
