@@ -1,42 +1,29 @@
 <template>
   <div
-    class="blade flex-none flex flex-col border-r border-blue-800 overflow-none"
+    class="blade flex-none flex flex-col border-l border-gray-400 overflow-none shadow-md bg-white"
     :class="{ 'w-full': maximized }"
   >
-    <div class="flex-none flex border-b border-blue-800">
-      <div class="flex-auto">
+    <div class="flex-none flex border-b border-gray-400">
+      <div class="flex-auto pl-4">
         <slot name="header">Blade Header</slot>
       </div>
       <div class="flex-none">
-        <button title="Close" @click="doClose">X</button>
+        <button
+          title="Close"
+          @click="doClose"
+          class="inline-block w-8 h-8 hover:bg-red-800 hover:text-red-100"
+        >
+          X
+        </button>
       </div>
     </div>
-    <div class="flex-none border-b border-blue-800" v-if="hasSlot('toolbar')">
+    <div class="flex-none border-b border-gray-400" v-if="hasSlot('toolbar')">
       <slot name="toolbar"></slot>
     </div>
-    <div class="flex-auto overflow-auto">
-      <slot>
-        <p class="mb-4">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod error
-          illum quis reiciendis modi quas eaque sint commodi quasi pariatur
-          ipsam consectetur enim tempora, delectus, maiores dolorem nisi.
-          Perferendis, placeat.
-        </p>
-        <p class="mb-4">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod error
-          illum quis reiciendis modi quas eaque sint commodi quasi pariatur
-          ipsam consectetur enim tempora, delectus, maiores dolorem nisi.
-          Perferendis, placeat.
-        </p>
-        <p class="mb-4">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod error
-          illum quis reiciendis modi quas eaque sint commodi quasi pariatur
-          ipsam consectetur enim tempora, delectus, maiores dolorem nisi.
-          Perferendis, placeat.
-        </p>
-      </slot>
+    <div class="flex-auto overflow-auto p-4">
+      <slot></slot>
     </div>
-    <div class="flex-none border-t border-blue-800" v-if="hasSlot('footer')">
+    <div class="flex-none border-t border-gray-400" v-if="hasSlot('footer')">
       <slot name="footer"></slot>
     </div>
   </div>

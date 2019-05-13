@@ -1,25 +1,35 @@
 <template>
   <div
-    class="w-screen h-screen flex flex-col overflow-hidden font-sans text-gray-900"
+    class="w-screen h-screen flex flex-col overflow-hidden font-sans text-gray-900 text-sm"
   >
-    <nav class="flex-none flex items-center h-10 bg-blue-800 text-blue-100">
-      <img src="@/assets/logo.png" class="h-6" />
-      Top navigation
+    <nav class="flex-none flex items-center h-10 bg-gray-900 text-gray-100">
+      <img src="@/assets/logo.png" class="h-6 mx-2" />
+      Vue blade nav test
+
+      <div class="ml-auto mr-1 flex items-center">
+        User
+        <span class="h-8 w-8 rounded-full bg-white inline-block ml-1"></span>
+      </div>
     </nav>
     <div class="flex-auto flex overflow-hidden">
       <nav
-        class="flex-none flex flex-col items-center bg-blue-900 text-blue-100"
+        class="flex-none flex flex-col items-center bg-gray-800 text-gray-100 overflow-hidden"
       >
-        Side nav
-        <router-link :to="{ name: 'home' }">Home</router-link>
-        <router-link
-          v-for="feat in topFeatures"
-          :key="feat.text"
-          :to="feat.path"
-          >{{ feat.text }}</router-link
-        >
+        <div class="flex-none">
+          <router-link to="/" class="block py-1 px-4">Home</router-link>
+        </div>
+
+        <div class="flex-auto overflow-auto">
+          <router-link
+            v-for="feat in topFeatures"
+            :key="feat.text"
+            :to="feat.path"
+            class="block py-1 px-4"
+            >{{ feat.text }}</router-link
+          >
+        </div>
       </nav>
-      <main class="flex-auto overflow-hidden">
+      <main class="flex-auto overflow-hidden shadow-lg">
         <router-view></router-view>
       </main>
     </div>

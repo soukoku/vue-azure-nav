@@ -1,12 +1,22 @@
 <template>
   <div class="w-full h-full flex flex-col">
-    <div class="blade-crumb flex-none border-b border-blue-800">
-      <router-link :to="{ name: 'home' }">Home</router-link>
+    <div class="blade-crumb flex-none border-b border-gray-400">
+      <router-link :to="{ name: 'home' }" class="inline-block py-1 px-2"
+        >Home</router-link
+      >
 
-      <router-link v-for="(blade, idx) in blades" :key="idx" :to="blade.route">
-        {{ blade.name }}
-      </router-link>
+      <template v-for="(blade, idx) in blades">
+        &gt;
+        <router-link
+          :key="idx"
+          :to="blade.route"
+          class="inline-block py-1 px-2"
+        >
+          {{ blade.name }}
+        </router-link>
+      </template>
     </div>
+
     <div
       class="blade-track flex-auto flex items-strech overflow-hidden overflow-x-auto scrolling-touch"
       ref="track"
@@ -96,8 +106,3 @@ export default {
   }
 }
 </script>
-<style>
-.blade-crumb > a:after {
-  content: '>';
-}
-</style>
