@@ -1,6 +1,7 @@
 # vue-azure-nav
 
 Experiments on making azure-like blade navigation using vue and vue router.
+View [demo site](https://vue-azure-nav.netlify.com/)
 
 ## Project setup
 ```
