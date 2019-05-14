@@ -2,7 +2,7 @@
   <div
     class="w-screen h-screen flex flex-col overflow-hidden font-sans text-sm"
   >
-    <nav class="flex-none flex items-center h-10 bg-gray-900 text-gray-100">
+    <nav class="flex-none flex items-center h-10 bg-gray-900 text-gray-100 shadow-lg">
       <router-link to="/" class="flex items-center font-semibold">
         <img src="@/assets/logo.png" class="h-6 mx-2" />
         Vue blade nav test
