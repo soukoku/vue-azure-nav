@@ -23,7 +23,7 @@
       </div>
     </div>
     <div
-      class="flex-none border-b border-gray-400 py-4"
+      class="flex-none border-b border-gray-400 px-4"
       v-if="hasSlot('toolbar')"
     >
       <slot name="toolbar"></slot>
@@ -84,7 +84,8 @@ export default {
   },
   methods: {
     hasSlot(name = 'default') {
-      return !!this.$slots[name] || !!this.$scopedSlots[name]
+      // vue 2.6+ can just use $scopedSlots
+      return !!this.$scopedSlots[name]
     },
     doClose() {
       // horrible hack due to no template inheritance in vue :(
