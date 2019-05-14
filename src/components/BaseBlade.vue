@@ -54,9 +54,9 @@ export default {
     },
     sizeMode: {
       type: String,
-      default: 'maximized',
+      default: 'max',
       validator: function(value) {
-        return ['maximized', 'minimum', 'fixed'].indexOf(value) !== -1
+        return ['max', 'min', 'fixed'].indexOf(value) !== -1
       }
     },
     title: {
@@ -76,7 +76,7 @@ export default {
       }
       if (this.sizeMode === 'fixed') {
         obj.width = this.size + 'px'
-      } else if (this.sizeMode === 'maximum') {
+      } else if (this.sizeMode === 'max') {
         obj.width = '100%'
       }
       return obj
