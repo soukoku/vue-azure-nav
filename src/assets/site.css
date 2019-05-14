@@ -10,3 +10,7 @@
 .link:hover {
   @apply text-blue-800 underline;
 }
+
+.material-design-icon {
+  display: flex;
+}

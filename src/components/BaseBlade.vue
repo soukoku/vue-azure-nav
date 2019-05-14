@@ -4,16 +4,21 @@
     :class="{ 'w-full': maximized }"
   >
     <div class="flex-none flex border-b border-gray-400">
-      <div class="flex-auto pl-4">
-        <slot name="header">Blade Header</slot>
-      </div>
       <div class="flex-none">
+        <slot name="icon"></slot>
+      </div>
+      <div class="flex-auto pl-4 py-1 overflow-hidden">
+        <h2 class="text-lg font-semibold truncate">{{ title }}</h2>
+        <small class="block truncate -mt-1">{{ subTitle }}</small>
+      </div>
+      <div class="flex-none flex items-center self-start">
+        <slot name="header-extra"></slot>
         <button
           title="Close"
           @click="doClose"
           class="flex items-center justify-center w-8 h-8 hover:bg-red-800 hover:text-red-100"
         >
-          <CloseIcon :size="20"/>
+          <CloseIcon :size="20" />
         </button>
       </div>
     </div>
@@ -40,6 +45,14 @@ export default {
     maximized: {
       type: Boolean,
       default: true
+    },
+    title: {
+      type: String,
+      default: 'Blade Header'
+    },
+    subTitle: {
+      type: String,
+      default: 'Sub-title'
     }
   },
   methods: {
