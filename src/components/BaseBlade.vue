@@ -1,7 +1,7 @@
 <template>
   <div
     class="blade flex-none flex flex-col border-l border-gray-400 overflow-none shadow-md bg-white"
-    :class="{ 'w-full': maximized }"
+    :style="sizeStyle"
   >
     <div class="flex-none flex border-b border-gray-400">
       <div class="flex-none">
@@ -22,13 +22,19 @@
         </button>
       </div>
     </div>
-    <div class="flex-none border-b border-gray-400" v-if="hasSlot('toolbar')">
+    <div
+      class="flex-none border-b border-gray-400 py-4"
+      v-if="hasSlot('toolbar')"
+    >
       <slot name="toolbar"></slot>
     </div>
     <div class="flex-auto overflow-auto p-4">
       <slot></slot>
     </div>
-    <div class="flex-none border-t border-gray-400" v-if="hasSlot('footer')">
+    <div
+      class="flex-none border-t border-gray-400 p-4"
+      v-if="hasSlot('footer')"
+    >
       <slot name="footer"></slot>
     </div>
   </div>
@@ -42,9 +48,16 @@ export default {
     CloseIcon
   },
   props: {
-    maximized: {
-      type: Boolean,
-      default: true
+    size: {
+      type: Number,
+      default: 300
+    },
+    sizeMode: {
+      type: String,
+      default: 'maximized',
+      validator: function(value) {
+        return ['maximized', 'minimum', 'fixed'].indexOf(value) !== -1
+      }
     },
     title: {
       type: String,
@@ -53,6 +66,20 @@ export default {
     subTitle: {
       type: String,
       default: 'Sub-title'
+    }
+  },
+  computed: {
+    sizeStyle() {
+      const obj = {
+        minWidth: this.size + 'px',
+        maxWidth: '100%'
+      }
+      if (this.sizeMode === 'fixed') {
+        obj.width = this.size + 'px'
+      } else if (this.sizeMode === 'maximum') {
+        obj.width = '100%'
+      }
+      return obj
     }
   },
   methods: {

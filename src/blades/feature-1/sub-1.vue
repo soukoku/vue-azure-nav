@@ -1,7 +1,7 @@
 <template>
-  <base-blade :maximized="false" class="w-64">
+  <base-blade size-mode="fixed">
     <template v-slot:header-extra>
-      <a href="">test me long text</a>
+      <a class="link mx-1">test truncate long text</a>
     </template>
 
     This is a sub feature of feature-1

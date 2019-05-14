@@ -14,7 +14,7 @@
     </nav>
     <div class="flex-auto flex overflow-hidden">
       <nav
-        class="flex-none flex flex-col items-center bg-gray-800 text-gray-100 overflow-hidden"
+        class="flex-none flex flex-col items-stretch bg-gray-800 text-gray-100 overflow-hidden"
       >
         <div class="flex-none">
           <router-link to="/" class="block py-1 px-4">Home</router-link>
