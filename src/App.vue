@@ -7,9 +7,18 @@
         <img src="@/assets/logo.png" class="h-6 mx-2" />
         Vue blade nav test
       </router-link>
-      <div class="ml-auto mr-1 flex items-center">
-        User
-        <span class="h-8 w-8 rounded-full bg-white inline-block ml-1"></span>
+      <div class="ml-auto flex items-center">
+        <div class="flex flex-col" style="max-width:150px;">
+          <span class="block truncate text-right">
+            long.email.address@company.com
+          </span>
+          <small
+            class="block truncate text-right leading-none uppercase font-semibold"
+          >
+            User Name
+          </small>
+        </div>
+        <span class="h-8 w-8 rounded-full bg-white inline-block mx-2"></span>
       </div>
     </nav>
     <div class="flex-auto flex overflow-hidden">
