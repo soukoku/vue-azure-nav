@@ -1,14 +1,14 @@
 <template>
   <div
-    class="w-screen h-screen flex flex-col overflow-hidden font-sans text-gray-900 text-sm"
+    class="w-screen h-screen flex flex-col overflow-hidden font-sans text-sm"
   >
     <nav class="flex-none flex items-center h-10 bg-gray-900 text-gray-100">
-      <router-link to="/" class="flex items-center">
+      <router-link to="/" class="flex items-center font-semibold">
         <img src="@/assets/logo.png" class="h-6 mx-2" />
         Vue blade nav test
       </router-link>
       <div class="ml-auto flex items-center">
-        <div class="flex flex-col" style="max-width:150px;">
+        <div class="flex flex-col cursor-pointer select-none" style="max-width:150px;">
           <span class="block truncate text-right">
             long.email.address@company.com
           </span>
