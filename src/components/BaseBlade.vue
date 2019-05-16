@@ -1,10 +1,11 @@
 <template>
-  <div
+  <section
     class="blade flex-none flex flex-col border-l border-gray-400 overflow-none shadow-md bg-white"
     :style="sizeStyle"
+    :aria-label="title"
   >
     <div class="flex-none flex border-b border-gray-400">
-      <div class="flex-none">
+      <div class="flex-none" aria-hidden="true">
         <slot name="icon"></slot>
       </div>
       <div class="flex-auto pl-4 py-1 overflow-hidden">
@@ -14,30 +15,31 @@
       <div class="flex-none flex items-center self-start">
         <slot name="header-extra"></slot>
         <button
+          aria-label="Close blade."
           title="Close"
           @click="doClose"
           class="flex items-center justify-center w-8 h-8 hover:bg-red-800 hover:text-red-100"
         >
-          <CloseIcon :size="20" />
+          <CloseIcon :size="20" decorative />
         </button>
       </div>
     </div>
-    <div
+    <base-toolbar
       class="flex-none border-b border-gray-400 px-4"
       v-if="hasSlot('toolbar')"
     >
       <slot name="toolbar"></slot>
-    </div>
+    </base-toolbar>
     <div class="flex-auto overflow-auto p-4">
       <slot></slot>
     </div>
-    <div
+    <footer
       class="flex-none border-t border-gray-400 p-4"
       v-if="hasSlot('footer')"
     >
       <slot name="footer"></slot>
-    </div>
-  </div>
+    </footer>
+  </section>
 </template>
 
 <script>

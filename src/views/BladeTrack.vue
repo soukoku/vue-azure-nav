@@ -1,17 +1,24 @@
 <template>
   <div class="w-full h-full flex flex-col">
-    <div class="blade-crumb flex-none border-b border-gray-400 pl-3">
+    <nav
+      aria-label="Breadcrumb"
+      class="blade-crumb flex-none border-b border-gray-400 pl-3"
+    >
       <router-link :to="{ name: 'home' }" class="link inline-block p-1"
         >Home</router-link
       >
 
       <template v-for="(blade, idx) in blades">
-        &gt;
-        <router-link :key="idx" :to="blade.route" class="link inline-block p-1">
+        <router-link
+          :key="idx"
+          :to="blade.route"
+          class="link inline-block p-1"
+          :aria-current="idx === blades.length - 1 ? 'page' : ''"
+        >
           {{ blade.name }}
         </router-link>
       </template>
-    </div>
+    </nav>
 
     <div
       class="blade-track flex-auto flex items-strech overflow-hidden overflow-x-auto scrolling-touch"
@@ -102,3 +109,13 @@ export default {
   }
 }
 </script>
+<style>
+.blade-crumb a + a::before {
+  display: inline-block;
+  content: '>';
+}
+.blade-crumb [aria-current='page'],
+.blade-crumb [aria-current='page']:hover {
+  @apply no-underline text-black;
+}
+</style>
