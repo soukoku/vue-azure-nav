@@ -20,23 +20,18 @@ export default {
     }
   },
   computed: {
-    style() {
-      return {
-        width: this.size + 'px',
-        height: this.size + 'px'
-      }
-    },
     attrs() {
       return {
         ...this.$attrs,
-        fill: this.fill
+        fill: this.fill,
+        width: this.size,
+        height: this.size
       }
     }
   },
   render(h) {
     const icon = require(`@/assets/${this.iconSet}/${this.icon}.svg`)
     return h(icon.default, {
-      style: this.style,
       class: { 'flex-none': true },
       attrs: this.attrs
     })
