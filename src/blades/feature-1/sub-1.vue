@@ -3,6 +3,15 @@
     <template v-slot:header-extra>
       <a class="link mx-1">test truncate long text</a>
     </template>
+    <template v-slot:toolbar>
+      <button>Overflow 🔥</button>
+      <button><base-icon icon="fast-rewind" /> Rewind</button>
+      <button><base-icon icon="play" /> Play</button>
+      <button><base-icon icon="fast-forward" /> Forward</button>
+      <button>button 3</button>
+      <button>button 4</button>
+      <button>button 5</button>
+    </template>
 
     This is a sub feature of feature-1
     <p>

@@ -4,7 +4,7 @@
     :style="sizeStyle"
     :aria-label="title"
   >
-    <div class="flex-none flex border-b border-gray-400">
+    <header class="flex-none flex border-b border-gray-400">
       <div class="flex-none" aria-hidden="true">
         <slot name="icon"></slot>
       </div>
@@ -18,12 +18,12 @@
           aria-label="Close blade."
           title="Close"
           @click="doClose"
-          class="flex items-center justify-center w-8 h-8 hover:bg-red-800 hover:text-red-100"
+          class="flex items-center justify-center w-8 h-8 hover:bg-red-700 hover:text-red-100"
         >
-          <CloseIcon :size="20" decorative />
+          <base-icon icon="close" :size="14" />
         </button>
       </div>
-    </div>
+    </header>
     <base-toolbar
       class="flex-none border-b border-gray-400 px-4"
       v-if="hasSlot('toolbar')"
@@ -43,12 +43,8 @@
 </template>
 
 <script>
-import CloseIcon from 'mdi/Close'
 export default {
   name: 'Blade',
-  components: {
-    CloseIcon
-  },
   props: {
     size: {
       type: Number,
