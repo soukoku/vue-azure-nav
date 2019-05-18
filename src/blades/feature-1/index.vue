@@ -8,6 +8,21 @@
           >sub 1</router-link
         >
       </p>
+      <p>
+        <base-dropdown-button>
+          <template v-slot:popup>
+            <ul>
+              <li><a tabindex="-1">Item 1</a></li>
+              <li><a tabindex="-1">Item 2</a></li>
+              <li><a tabindex="-1">Item 3</a></li>
+              <li><a tabindex="-1">Item 4</a></li>
+              <li><a tabindex="-1">Item 5</a></li>
+              <li><a tabindex="-1">Item 6</a></li>
+              <li><a tabindex="-1">Item 7</a></li>
+            </ul>
+          </template>
+        </base-dropdown-button>
+      </p>
     </template>
 
     <template v-slot:toolbar>
